@@ -21,43 +21,41 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
-        android:text="Title"
+        android:fontFamily="serif"
         android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
         android:textColor="#000000"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mediaImage" />
+        app:layout_constraintTop_toBottomOf="@+id/mediaRating"
+        tools:text="Title" />
 
     <TextView
         android:id="@+id/mediaByline"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="10dp"
-        android:text="Byline"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textAppearance="?attr/textAppearanceListItem"
         android:textColor="#000000"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mediaTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/mediaTitle"
+        tools:text="Byline" />
 
-    <TextView
-        android:id="@+id/mediaAbstract"
-        android:layout_width="0dp"
+    <RatingBar
+        android:id="@+id/mediaRating"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:text="Abstract"
-        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:isIndicator="true"
+        android:numStars="10"
+        android:stepSize="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mediaByline" />
+        app:layout_constraintTop_toBottomOf="@+id/mediaImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

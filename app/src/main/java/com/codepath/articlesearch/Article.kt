@@ -1,60 +1,35 @@
 package com.codepath.articlesearch
 
 import android.support.annotation.Keep
+import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Keep
 @Serializable
-data class SearchNewsResponse(
-    @SerialName("response")
-    val response: BaseResponse?
-)
-
-@Keep
-@Serializable
 data class BaseResponse(
-    @SerialName("docs")
-    val docs: List<Article>?
+    @SerialName("results")
+    val results: List<Article>?
 )
 
 @Keep
 @Serializable
 data class Article(
-    @SerialName("abstract")
-    var abstract: String?,
+    @SerialName("backdrop_path")
+    var backdrop_path: String? = null,
 
-    @SerialName("byline")
-    var byline: Byline?,
+    @SerialName("id")
+    var movie_id: String? = null,
 
-    @SerialName("headline")
-    var headline: Headline?,
+    @SerialName("name")
+    var movie_name: String? = null,
 
-    @SerialName("multimedia")
-    var multimedia: List<MultiMedia>?
-): java.io.Serializable {
-    val mediaImageUrl = "https://www.nytimes.com/${multimedia?.firstOrNull { it.url != null }?.url ?: ""}"
-}
+    @SerialName("overview")
+    var movie_overview: String? = null,
 
-@Keep
-@Serializable
-data class Headline(
-    @SerialName("main")
-    var main: String?,
-    @SerialName("print_headline")
-    var print_headline: String?
-) : java.io.Serializable
+    @SerialName("poster_path")
+    var poster_path: String? = null,
 
-@Keep
-@Serializable
-data class Byline(
-    @SerialName("original")
-    var original: String?
-) : java.io.Serializable
-
-@Keep
-@Serializable
-data class MultiMedia(
-    @SerialName("url")
-    val url: String?
+    @SerialName("vote_average")
+    var vote_average: Float?
 ) : java.io.Serializable

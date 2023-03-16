@@ -9,6 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterInside
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 const val ARTICLE_EXTRA = "ARTICLE_EXTRA"
 private const val TAG = "ArticleAdapter"
@@ -34,7 +36,7 @@ class ArticleAdapter(private val context: Context, private val articles: List<Ar
 
         private val mediaImageView = itemView.findViewById<ImageView>(R.id.mediaImage)
         private val titleTextView = itemView.findViewById<TextView>(R.id.mediaTitle)
-        private val abstractTextView = itemView.findViewById<TextView>(R.id.mediaAbstract)
+        private val overviewTextView = itemView.findViewById<TextView>(R.id.mediaAbstract)
 
         init {
             itemView.setOnClickListener(this)
@@ -42,11 +44,12 @@ class ArticleAdapter(private val context: Context, private val articles: List<Ar
 
         // TODO: Write a helper method to help set up the onBindViewHolder method
         fun bind(article: Article) {
-            titleTextView.text = article.headline?.main
-            abstractTextView.text = article.abstract
+            titleTextView.text = article.movie_name
+            overviewTextView.text = article.movie_overview
 
             Glide.with(context)
-                .load(article.mediaImageUrl)
+                .load("https://image.tmdb.org/t/p/w500/" + article.poster_path)
+                .transform(CenterInside(), RoundedCorners(24))
                 .into(mediaImageView)
         }
 
